@@ -1,1 +1,207 @@
 
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hanákcar</title>
+<link rel="icon" type="image/png" href="hc23.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', Arial, sans-serif;
+  overflow-x: hidden;
+  background: linear-gradient(135deg, #0a0a0a90, #1e1e2f90),
+              url('hcj.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #ffffff;
+}
+
+/* MOBIL JOBB OLDALI NYÍL + MENÜ */
+.mobile-tab {
+  display: none;
+}
+
+.mobile-menu {
+  display: none;
+}
+
+/* DESKTOP BAL OLDALI HOVER MENÜ */
+.desktop-menu {
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 260px;
+  height: 100%;
+  background: rgba(0,0,0,0.92);
+  padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  transition: left 0.35s ease;
+  z-index: 9998;
+}
+
+.desktop-menu a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 22px;
+  padding-left: 20px;
+  font-family: 'Poppins';
+}
+
+/* MOBIL MENÜ — csak telefonon */
+@media (max-width: 768px) {
+
+  .desktop-menu {
+    display: none;
+  }
+
+  .mobile-tab {
+    display: block;
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background: #000;
+    color: #fff;
+    padding: 10px 14px;
+    font-size: 22px;
+    border-radius: 8px 0 0 8px;
+    cursor: pointer;
+    z-index: 9999;
+  }
+
+  .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: fixed;
+    top: 0;
+    right: -220px;
+    width: 220px;
+    height: 100%;
+    background: rgba(0,0,0,0.92);
+    padding-top: 80px;
+    transition: right 0.3s ease;
+    z-index: 9998;
+  }
+
+  .mobile-menu.open {
+    right: 0;
+  }
+
+  .mobile-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    padding-left: 25px;
+  }
+}
+
+header {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 48px;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+  font-weight: 700;
+}
+
+p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  margin-bottom: 40px;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+}
+
+.button {
+  display: inline-block;
+  background: #ffffff;
+  color: #000000;
+  padding: 15px 30px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 500;
+  transition: 0.3s, transform 0.2s;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.button:hover {
+  background: #dddddd;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  opacity: 0.6;
+}
+</style>
+</head>
+
+<body>
+
+<!-- MOBIL NYÍL + MENÜ -->
+<div class="mobile-tab" onclick="toggleMobileMenu()">➤</div>
+
+<div class="mobile-menu" id="mobileMenu">
+ <a href="elerhetosegek.html">Elérhetőség</a>
+  <a href="flottakezeles.html">Flottakezelés</a>
+  <a href="erdekessegek.html">Érdekességek</a>
+  <a href="luxury/">Luxusautók</a>
+</div>
+
+<!-- Desktop bal oldali menü -->
+<div class="desktop-menu" id="desktopMenu">
+  <a href="elerhetosegek.html">Elérhetőség</a>
+  <a href="flottakezeles.html">Flottakezelés</a>
+  <a href="interests/">Érdekességek</a>
+  <a href="luxury/">Luxusautók</a>
+</div>
+
+<header>
+  <h1>Üdvözlünk a Hanákcarnál!</h1>
+  <p>Minőségi használt autók, gyors ügyintézés, megbízható háttér.</p>
+  <a href="https://www.hasznaltauto.hu/partner/hanak_car_kft-12387" class="button">Használtautók megtekintése</a>
+  <a href="luxury/" class="button">Luxusautók</a>
+</header>
+
+
+
+<footer>
+  © 2026 Hanákcar — Minden jog fenntartva.
+</footer>
+
+<script>
+// MOBIL MENÜ
+function toggleMobileMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+// DESKTOP BAL OLDALI AUTOMATA HOVER MENÜ
+const dmenu = document.getElementById("desktopMenu");
+
+document.addEventListener("mousemove", (e) => {
+  if (window.innerWidth <= 768) return;
+
+  if (e.clientX < 40) {
+    dmenu.style.left = "0";
+  } else if (e.clientX > 260) {
+    dmenu.style.left = "-260px";
+  }
+});
+</script>
+
+</body>
+</html>
